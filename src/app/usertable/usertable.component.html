@@ -1,0 +1,33 @@
+  <form>
+    <input type="text" placeholder="Search by fullname" #fullNameFilter>
+    <input type="text" placeholder="Search by email" #emailFilter>
+    <input type="text" placeholder="Search by birthDate" #birthDateFilter>
+    <button class="primary" type="button" (click)="filterResults(fullNameFilter.value, emailFilter.value, birthDateFilter.value )">Search</button>
+  </form>
+  <form>
+    <input type="radio" (change)="status='';filter()" name="status" value="all" checked>all
+    <input type="radio" (change)="status='client';filter()" name="status" value="client">client
+    <input type="radio" (change)="status='demo';filter()" name="status"  value="demo">demo
+    <input type="radio" (change)="status='lead';filter()" name="status" value="lead">lead
+
+  </form>
+<table>
+    <!--
+    <tr>
+        <th>first name</th>
+        <th>last name</th>
+        <th>e-mail</th>
+        <th>birth date</th>
+        <th>registration date</th>
+        <th>status</th>
+    </tr>
+    -->
+    <tr *ngFor="let user of userListFiltered">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.birthDate}}</td>
+        <td>{{user.registrationDate}}</td>
+        <td>{{user.status}}</td>
+    </tr>
+</table>
